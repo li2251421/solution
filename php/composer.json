@@ -12,7 +12,10 @@
         "psr-4": {
             "Redis\\": "redis/",
             "Uniqueid\\": "uniqueid/"
-        }
+        },
+        "files": [
+            "lib/helper.php"
+        ]
     },
     "require": {}
 }
