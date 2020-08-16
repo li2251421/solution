@@ -1,5 +1,13 @@
 # 通用解决方案
 
+## 网络IO模型
+- event/libevent 高性能网络事件库
+- blocking IO 阻塞IO
+- non-blocking IO 非阻塞IO
+- multiplexing IO 多路复用IO
+- signal-driven IO 信号驱动式IO
+- asynchronous IO 异步IO
+
 ## Redis
 - Redis连接池
 - Redis分布式锁

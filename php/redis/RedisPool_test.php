@@ -1,7 +1,5 @@
 <?php
 
-namespace Redis;
-
 require_once '../vendor/autoload.php';
 
 test();

@@ -1,7 +1,5 @@
 <?php
 
-namespace Uniqueid;
-
 require_once '../vendor/autoload.php';
 
 use \Swoole\Coroutine\Channel as chan;

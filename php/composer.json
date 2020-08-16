@@ -11,10 +11,12 @@
     "autoload": {
         "psr-4": {
             "Redis\\": "redis/",
-            "Uniqueid\\": "uniqueid/"
+            "Uniqueid\\": "uniqueid/",
+            "IO\\": "io",
+            "Util\\": "util"
         },
         "files": [
-            "lib/helper.php"
+            "util/helper.php"
         ]
     },
     "require": {}

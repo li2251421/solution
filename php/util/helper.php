@@ -1,10 +1,7 @@
 <?php
 
+// 打印
 if (!function_exists('dd')) {
-    /**
-     * @param  [type] $a [description]
-     * @return Application
-     */
     function dd($message, $description = null)
     {
         $return = "======>>> " . $description . " start\n";
@@ -18,6 +15,7 @@ if (!function_exists('dd')) {
     }
 }
 
+// 字符串转数组 'a=1,b=2,c=3' => [a => 1, b => 2, c => 3]
 if (!function_exists('stringToArr')) {
     function stringToArr($str, $flag1 = ',', $flag2 = '=')
     {
@@ -36,6 +34,7 @@ if (!function_exists('stringToArr')) {
     }
 }
 
+// crc16算法
 if (!function_exists('crc16hash')) {
     function crc16hash($value)
     {
