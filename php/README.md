@@ -8,7 +8,7 @@ docker exec -it php_base /bin/bash
 
 cd /srv/www/vhosts/blog/php
 
-composer install/composer dump-upload
+composer install/composer dump-autoload
 
 ## 项目实现
 ### io-网络IO模型
