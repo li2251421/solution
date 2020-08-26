@@ -1,6 +1,6 @@
 <?php
 
-namespace Uniqueid;
+namespace App\uniqueid;
 
 use Swoole\Lock;
 

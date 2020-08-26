@@ -2,6 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
+use App\redis\RedisLock;
+
 $redisLock = new RedisLock();
 
 $key = "lock";

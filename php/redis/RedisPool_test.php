@@ -2,6 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
+use App\redis\RedisPool;
+
 test();
 
 function test()

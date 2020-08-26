@@ -4,7 +4,7 @@
  * 多路复用IO，stream_select($read, $write, $except, 60) 选择可读可写连接
  */
 
-namespace IO\multiplexing;
+namespace App\io\multiplexing;
 
 class Worker
 {

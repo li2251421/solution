@@ -1,6 +1,6 @@
 <?php
 
-namespace Redis;
+namespace App\redis;
 
 use Swoole\Coroutine\Channel;
 

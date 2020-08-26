@@ -2,7 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
-use Util\Inotify;
+use App\util\Inotify;
 
 $inotify = new Inotify(__DIR__, watchEvent());
 $inotify->start();

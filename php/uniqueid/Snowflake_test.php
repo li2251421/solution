@@ -2,6 +2,7 @@
 
 require_once '../vendor/autoload.php';
 
+use App\uniqueid\{SnowflakeOnSwoole, SnowflakeOnRedis};
 use \Swoole\Coroutine\Channel as chan;
 
 //testOnSwoole();
@@ -13,7 +14,7 @@ function testOnSwoole()
     // 常驻内存方式，实例化一次
     $snowflake = new SnowflakeOnSwoole($workerId);
 
-    $n = 100;
+    $n = 10;
     $chan = new chan($n);
 
     for ($i = 0; $i < $n; $i++) {
@@ -39,22 +40,21 @@ function testOnSwoole()
 function testOnRedis()
 {
     $workerId = 1;
-    $n = 100;
+    $n = 10;
 
     $arr = [];
-    // 非常驻内存，每次都需实例化，这里为了测试实例化一次
-//    $snowflake = new SnowflakeOnRedis($workerId);
-//    for ($i = 0; $i < $n; $i++) {
-//        // $snowflake = new SnowflakeOnRedis($workerId);
-//        $id = $snowflake->getId();
-//        if (in_array($id, $arr)) {
-//            exit("ID 已存在！重复ID：" . $id . "\n");
-//        }
-//        array_push($arr, $id);
-//        echo $id . "\n";
-//    }
+    $snowflake = SnowflakeOnRedis::getInstance($workerId);
+    for ($i = 0; $i < $n; $i++) {
+        $id = $snowflake->getId();
+        if (in_array($id, $arr)) {
+            exit("ID 已存在！重复ID：" . $id . "\n");
+        }
+        array_push($arr, $id);
+        echo $id . "\n";
+    }
+    die;
 
-    $snowflake = new SnowflakeOnRedis($workerId);
+    $snowflake = SnowflakeOnRedis::getInstance($workerId);
     $chan = new chan($n);
     for ($i = 0; $i < $n; $i++) {
         go(function () use ($snowflake, $chan) {

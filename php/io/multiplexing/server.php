@@ -2,7 +2,7 @@
 
 require_once '../../vendor/autoload.php';
 
-use IO\multiplexing\Worker;
+use App\io\multiplexing\Worker;
 
 class Server
 {

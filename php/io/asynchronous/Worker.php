@@ -6,7 +6,7 @@
  * epoll 因为采用 mmap的机制, 使得 内核socket buffer和 用户空间的 buffer共享, 从而省去了 socket data copy
  */
 
-namespace IO\asynchonous;
+namespace App\io\asynchronous;
 
 use Swoole\Event;
 

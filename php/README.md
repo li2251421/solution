@@ -19,10 +19,19 @@ composer install/composer dump-autoload
 - signal-driven IO 信号驱动式IO
 - asynchronous IO 异步IO
 
+### ratelimiter-限流
+- Counter 计数器算法
+- SlidingWindowCounter 滑动窗口计数器算法
+- LeakyBucket 漏桶算法
+- TokenBucket 令牌桶算法
+
 ### redis
 - RedisPool Redis连接池
 - RedisLock Redis分布式锁
 - RedisClient Redis客户端，支持单点、主从、哨兵、集群模式，主从延迟及哨兵模式下的故障切换
+
+### shorturl-长链转短链
+- ShortUrl 前置发号器+redis+62进制表示法
 
 ### uniqueid-分布式唯一ID
 - SnowflakeOnSwoole 基于Swoole实现的Snowflake雪花算法

@@ -2,6 +2,8 @@
 
 require_once '../vendor/autoload.php';
 
+use App\redis\RedisClient;
+
 $config = [
     // 类型, normal-单点(默认), ms-主从, sentinel-哨兵, cluster-集群
     'type' => 'normal',

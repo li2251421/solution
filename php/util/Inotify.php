@@ -4,7 +4,7 @@
  * 监控文件或目录的变化，基于inotify扩展
  */
 
-namespace Util;
+namespace App\Util;
 
 class Inotify
 {
