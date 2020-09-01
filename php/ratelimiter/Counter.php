@@ -10,6 +10,7 @@ class Counter
 {
     public static function reqLimit($key, $expire, $limit)
     {
+        $key = self::getPrefix() . $key;
         $redis = self::getRedis();
 
         // lua脚本保证原子性
@@ -37,5 +38,10 @@ class Counter
         $redis->connect('127.0.0.1', '6379');
 
         return $redis;
+    }
+
+    private static function getPrefix()
+    {
+        return "ratelimiter:counter:";
     }
 }

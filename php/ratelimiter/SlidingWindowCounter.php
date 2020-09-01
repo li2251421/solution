@@ -16,6 +16,7 @@ class SlidingWindowCounter
      */
     public static function reqLimit($key, $expire, $limit)
     {
+        $key = self::getPrefix() . $key;
         $redis = self::getRedis();
         $now = self::getMilliSecond();
 
@@ -41,5 +42,10 @@ class SlidingWindowCounter
     private static function getMilliSecond()
     {
         return (int)(microtime(true) * 1000);
+    }
+
+    private static function getPrefix()
+    {
+        return "retelimiter:sliding_window_counter:";
     }
 }
