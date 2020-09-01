@@ -43,8 +43,8 @@ function testOnRedis()
     $n = 10;
 
     $arr = [];
-    $snowflake = SnowflakeOnRedis::getInstance($workerId);
     for ($i = 0; $i < $n; $i++) {
+        $snowflake = new SnowflakeOnRedis($workerId);
         $id = $snowflake->getId();
         if (in_array($id, $arr)) {
             exit("ID 已存在！重复ID：" . $id . "\n");
@@ -54,7 +54,7 @@ function testOnRedis()
     }
     die;
 
-    $snowflake = SnowflakeOnRedis::getInstance($workerId);
+    $snowflake = new SnowflakeOnRedis($workerId);
     $chan = new chan($n);
     for ($i = 0; $i < $n; $i++) {
         go(function () use ($snowflake, $chan) {

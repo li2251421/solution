@@ -7,6 +7,7 @@ use Swoole\Lock;
 /**
  * Class Snowflake
  * 64bit = 1bit(符号位固定0) + 41bit(毫秒时间戳) + 10bit(机器节点) + 12bit(序列号)
+ * 时钟回拨问题，借用上次时间戳并报警通知
  */
 class SnowflakeOnSwoole
 {
@@ -21,18 +22,18 @@ class SnowflakeOnSwoole
     const TIME_OFFSET = self::WORKER_BITS + self::SEQUENCE_BITS; // 时间戳部分左偏移量
     const WORKER_OFFSET = self::SEQUENCE_BITS; // 节点部分左偏移量
 
-    protected $timestamp; // 上次ID生成时间戳
+    protected $lastTime; // 上次ID生成时间戳
     protected $workerId; // 节点ID
     protected $sequence; // 序号
     protected $lock; // Swoole互斥锁
 
     public function __construct($workerId)
     {
-        if ($workerId < 0 || $workerId > self::WORKER_BITS) {
+        if ($workerId < 0 || $workerId > self::WORKER_MAX) {
             throw new \Exception("Worker Id 超出范围");
             exit(0);
         }
-        $this->timestamp = 0; // 常驻内存，初始化一次
+        $this->lastTime = 0; // 常驻内存，初始化一次
         $this->workerId = $workerId;
         $this->sequence = 0; // 常驻内存，初始化一次
         $this->lock = new Lock(SWOOLE_MUTEX);
@@ -42,12 +43,17 @@ class SnowflakeOnSwoole
     {
         $this->lock->lock();
         $now = $this->millisecond();
-        if ($this->timestamp == $now) {
+        // 时钟回拨问题，借用上次时间戳并报警通知
+        if ($this->lastTime > $now) {
+            dd("workerId: {$this->workerId}, now: {$now}, lastTime: {$this->lastTime}", 'clock is turn back');
+            $now = $this->lastTime;
+        }
+        if ($this->lastTime == $now) {
             // 同一毫秒内，序号++
             $this->sequence++;
             if ($this->sequence > self::SEQUENCE_MAX) {
                 // 当前毫秒序号用完，等待一下毫秒生成
-                while ($now <= $this->timestamp) {
+                while ($now <= $this->lastTime) {
                     $now = $this->millisecond();
                 }
             }
@@ -55,12 +61,12 @@ class SnowflakeOnSwoole
             // 新的毫秒复位序号
             $this->sequence = 0;
         }
-        $this->timestamp = $now; // 记录上次时间戳
+        $this->lastTime = $now; // 记录上次时间戳
 
         $id = ($now - self::EPOTH) << self::TIME_OFFSET | $this->workerId << self::WORKER_OFFSET | $this->sequence;
 
         $this->lock->unlock();
-        echo "timestamp: " . $this->timestamp . ", sequence: " . $this->sequence . "\n";
+        echo "lastTime: " . $this->lastTime . ", sequence: " . $this->sequence . "\n";
         return $id;
     }
 
