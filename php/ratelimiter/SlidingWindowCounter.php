@@ -3,7 +3,7 @@
 namespace App\ratelimiter;
 
 /**
- * 滑动窗口计数器算法
+ * 滑动窗口计数器算法，基于redis zset维护时间窗口
  * 窗口精确度为1ms，若并发较大，可设置score为微秒
  */
 class SlidingWindowCounter

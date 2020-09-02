@@ -3,7 +3,7 @@
 namespace App\ratelimiter;
 
 /**
- * 漏桶算法，基于毫秒实现
+ * 漏桶算法，基于毫秒实现，redis hash维护上次处理时间和缓冲队列
  * 弊端：无法应对短时间的突发流量
  */
 class LeakyBucket
