@@ -24,3 +24,17 @@
 
 ## 分布式唯一ID(PHP/Go)
 - Snowflake 雪花算法
+
+## 数据结构与算法(Go)
+- array 数组
+- string 字符串
+- linkedlist 链表
+- stack 栈
+- queue 队列
+- heap 堆
+- sort 排序
+- dp 动态规划
+- double_pointer 双指针
+- sliding_window 滑动窗口
+- traceback 回溯算法
+- design 设计
