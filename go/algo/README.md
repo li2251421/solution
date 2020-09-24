@@ -27,5 +27,8 @@
 
 ## traceback 回溯算法
 
+## math 数学问题
+- countPrimes 统计质数
+
 ## design 设计
 

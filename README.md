@@ -37,4 +37,5 @@
 - double_pointer 双指针
 - sliding_window 滑动窗口
 - traceback 回溯算法
+- math 数学问题
 - design 设计
