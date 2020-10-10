@@ -25,10 +25,11 @@
 
 ## sliding_window 滑动窗口
 
-## traceback 回溯算法
+## backtrack 回溯算法
 
 ## math 数学问题
 - countPrimes 统计质数
+- trailingZeroes 阶乘后的零
 
 ## design 设计
 

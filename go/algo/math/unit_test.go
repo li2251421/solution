@@ -7,3 +7,9 @@ func TestCountPrimes(t *testing.T) {
 	res := countPrimes(n)
 	t.Log(res)
 }
+
+func TestTrailingZeroes(t *testing.T) {
+	n := 10
+	res := trailingZeroes(n)
+	t.Log(res)
+}
