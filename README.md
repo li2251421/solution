@@ -8,6 +8,9 @@
 - signal-driven IO 信号驱动式IO
 - asynchronous IO 异步IO
 
+## tcp(Go)
+- unpack msg_header+content_len+content解决粘包/拆包问题 
+
 ## 限流(PHP)
 - Counter 计数器算法
 - SlidingWindowCounter 滑动窗口计数器算法

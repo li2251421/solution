@@ -6,6 +6,9 @@
 ### uniqueid-分布式唯一ID
 - snowflake Snowflake雪花算法
 
+### tcp
+- unpack msg_header+content_len+content解决粘包/拆包问题 
+
 ### algo-算法
 - array 数组
 - string 字符串
