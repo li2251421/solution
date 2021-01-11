@@ -12,32 +12,48 @@ composer install/composer dump-autoload
 
 ## 项目实现
 ### io-网络IO模型
-- event/libevent 高性能网络事件库
-- blocking IO 阻塞IO
-- non-blocking IO 非阻塞IO
-- multiplexing IO 多路复用IO
-- signal-driven IO 信号驱动式IO
-- asynchronous IO 异步IO
+- [event/libevent](https://github.com/li2251421/solution/tree/master/php/io/event)
+高性能网络事件库
+- [blocking IO](https://github.com/li2251421/solution/tree/master/php/io/blocking)
+阻塞IO
+- [non-blocking IO](https://github.com/li2251421/solution/tree/master/php/io/non-blocking)
+非阻塞IO
+- [multiplexing IO](https://github.com/li2251421/solution/tree/master/php/io/multiplexing) 
+多路复用IO
+- [signal-driven IO](https://github.com/li2251421/solution/tree/master/php/io/signal-driven)
+信号驱动式IO
+- [asynchronous IO](https://github.com/li2251421/solution/tree/master/php/io/asynchronous)
+异步IO
 
 ### ratelimiter-限流
-- Counter 计数器算法
-- SlidingWindowCounter 滑动窗口计数器算法
-- LeakyBucket 漏桶算法
-- TokenBucket 令牌桶算法
+- [Counter](https://github.com/li2251421/solution/blob/master/php/ratelimiter/Counter.php)
+计数器算法
+- [SlidingWindowCounter](https://github.com/li2251421/solution/blob/master/php/ratelimiter/SlidingWindowCounter.php) 
+滑动窗口计数器算法
+- [LeakyBucket](https://github.com/li2251421/solution/blob/master/php/ratelimiter/LeakyBucket.php) 
+漏桶算法
+- [TokenBucket](https://github.com/li2251421/solution/blob/master/php/ratelimiter/TokenBucket.php) 
+令牌桶算法
 
 ### redis
-- RedisPool Redis连接池
-- RedisLock Redis分布式锁
-- RedisClient Redis客户端，支持单点、主从、哨兵、集群模式，主从延迟及哨兵模式下的故障切换
+- [RedisPool](https://github.com/li2251421/solution/blob/master/php/redis/RedisPool.php) 
+Redis连接池
+- [RedisLock](https://github.com/li2251421/solution/blob/master/php/redis/RedisLock.php) 
+Redis分布式锁
+- [RedisClient](https://github.com/li2251421/solution/blob/master/php/redis/RedisClient.php) 
+Redis客户端，支持单点、主从、哨兵、集群模式，主从延迟及哨兵模式下的故障切换
 
 ### shorturl-长链转短链
-- ShortUrl 前置发号器+redis+62进制表示法
+- [ShortUrl](https://github.com/li2251421/solution/blob/master/php/shorturl/ShortUrl.php) 
+前置发号器+redis+62进制表示法
 
 ### uniqueid-分布式唯一ID
-- SnowflakeOnSwoole 基于Swoole实现的Snowflake雪花算法
-- SnowflakeOnRedis 基于Redis实现的Snowflake雪花算法 
+- [SnowflakeOnRedis](https://github.com/li2251421/solution/blob/master/php/uniqueid/SnowflakeOnRedis.php) 
+- [SnowflakeOnSwoole](https://github.com/li2251421/solution/blob/master/php/uniqueid/SnowflakeOnSwoole.php) 
 
 ### util-工具包
-- Inotify 监控文件变化
-- helper 公共方法
+- [Inotify](https://github.com/li2251421/solution/blob/master/php/util/Inotify.php) 
+监控文件变化
+- [helper](https://github.com/li2251421/solution/blob/master/php/util/helper.php) 
+公共方法
 
