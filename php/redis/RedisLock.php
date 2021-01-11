@@ -7,6 +7,11 @@ namespace App\redis;
  * 并发锁
  * set nx ex 代替 setnx + expire，防止setnx出问题lock永远不会被释放
  * lua脚本 先get后del 代替 直接del，防止删除自己处理锁过期后别人加的锁
+ *
+ * 优点：实现简单，性能比ZK和MySQL好。
+ * 缺点：需要维护Redis集群，RedLock需要维护更多的集群。
+ *
+ * 复杂场景或严格场景参考Redission(Java库)和RedLock
  */
 class RedisLock
 {
@@ -27,11 +32,11 @@ class RedisLock
 
     /**
      * @param $key
-     * @param int $blockTime 等待时间，单位：毫秒
      * @param int $px 过期时间，单位：毫秒
+     * @param int $blockTime 等待时间，单位：毫秒
      * @return $token or false
      */
-    public function lock($key, $blockTime = 0, $px = 1000)
+    public function lock($key, $px = 1000, $blockTime = 0)
     {
         $token = uniqid(); // 生成一个随机token，解锁时通过token标识，防止解除别人加的锁
         while ($blockTime >= 0) {
@@ -40,6 +45,10 @@ class RedisLock
                 return $token;
             }
             $blockTime -= self::DEFAULT_SLEEP_TIME;
+            if ($blockTime <= 0) {
+                // 非堵塞模式，直接返回
+                break;
+            }
             usleep(self::DEFAULT_SLEEP_TIME * 1000); // 睡眠一会，防止cpu空转
         }
         return false;

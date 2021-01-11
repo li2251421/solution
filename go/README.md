@@ -7,7 +7,16 @@
 - snowflake Snowflake雪花算法
 
 ### tcp
-- unpack msg_header+content_len+content解决粘包/拆包问题 
+- unpack msg_header+content_len+content解决粘包/拆包问题
+
+### zookeeper
+- lock 分布式锁
+
+### load_balance-负载均衡算法(todo)
+- random 随机
+- round_robin 轮询
+- weight_round_robin 加权轮询
+- consistent_hash 一致性哈希
 
 ### algo-算法
 - array 数组

@@ -7,7 +7,7 @@ use App\redis\RedisLock;
 $redisLock = new RedisLock();
 
 $key = "lock";
-$token = $redisLock->lock($key, 2 * 1000);
+$token = $redisLock->lock($key, 1000, 2 * 1000);
 echo "token: " . $token;
 if ($token) {
     $redisLock->unlock($key, $token . '1');
