@@ -27,7 +27,7 @@ func heapSort(a []int) {
 // 建堆
 func buildHeap(a []int) {
 	n := len(a)
-	// 从第一个非叶子节点(倒数第二层第一个节点 n/2-1)自上而下依次堆化
+	// 最后一个非叶子节点(倒数第二层 n/2-1)自上而下依次堆化
 	for i := n/2 - 1; i >= 0; i-- {
 		heapifyUpToDown(a, i, n)
 	}
