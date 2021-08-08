@@ -16,6 +16,9 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
 ## 项目实现
+### library
+- wire 依赖注入代码生成器
+
 ### uniqueid-分布式唯一ID
 - [Snowflake](https://github.com/li2251421/solution/blob/master/go/uniqueid/snowflake.go)
 

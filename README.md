@@ -87,3 +87,6 @@ Redis客户端，支持单点、主从、哨兵、集群模式，主从延迟及
 数学问题
 - [design](https://github.com/li2251421/solution/tree/master/go/algo/design) 
 设计
+  
+## 常用库(Go)
+- [wire](https://github.com/li2251421/solution/tree/master/go/library/wire)
