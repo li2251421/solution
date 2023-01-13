@@ -10,6 +10,7 @@ class Counter
 {
     public static function reqLimit($key, $expire, $limit)
     {
+        $_GET
         $key = self::getPrefix() . $key;
         $redis = self::getRedis();
 
